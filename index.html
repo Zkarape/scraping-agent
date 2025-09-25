@@ -1,17 +1,519 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hy">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anamnesis Vitae</title>
+    <meta charset="utf-8">
+    <title>Ամբուլատոր քարտ</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="initial-scale = 1.0">
+    
+    <style>
+    body {
+        margin: 0;
+        line-height: normal !important;
+        font-size: 16px !important;
+        font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        background-color: #C8B8D6;
+        min-height: 30px;
+    }
+
+    .main {
+        margin-top: 65px;
+        padding: 20px;
+    }
+
+    .my-fieldset {
+        display: block;
+        margin: 15px 2px;
+        padding: 15px;
+        border: 2px solid #333;
+        border-radius: 5px;
+        background-color: #fafafa;
+    }
+
+    .my-fieldset legend {
+        font-weight: bold;
+        padding: 0 10px;
+        background-color: white;
+        border: 1px solid #333;
+        border-radius: 3px;
+    }
+
+    /* Make textareas accessible and user-friendly */
+    textarea {
+        width: 100%;
+        max-width: 600px;
+        min-height: 80px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        line-height: 1.4;
+        resize: vertical;
+        background-color: white;
+        transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    }
+
+    textarea:hover {
+        border-color: #999;
+    }
+
+    /* Make input fields accessible */
+    input[type="text"], input[type="number"], select {
+        padding: 8px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: white;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus, select:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    }
+
+    /* Form layout improvements */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Button styling */
+    .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #45a049;
+    }
+
+    .btn:focus {
+        outline: 2px solid #333;
+        outline-offset: 2px;
+    }
+
+    /* Accessibility improvements */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Print styles */
+    @media print {
+        .navbar, .btn {
+            display: none;
+        }
+        body {
+            margin: 0;
+            font-size: 12px;
+        }
+        .main {
+            margin-top: 0;
+        }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .main {
+            padding: 10px;
+        }
+        textarea {
+            min-height: 60px;
+        }
+    }
+    </style>
 </head>
+
 <body>
-    <fieldset class="my-fieldset">
-        <legend>Կյանքի պատմություն. Anamnesis Vitae</legend>
-        <p>
-            <textarea class="span8" cols="40" maxlength="4000" name="anamnesisMorbiEntityADsc" rows="3">Ծանրաբեռնված չէ:</textarea>
-        </p>
-        <p></p>
-    </fieldset>
+    <div class="navbar">
+        <div style="display: grid; grid-template-columns: auto auto; padding: 10px;">
+            <div class="text-left">
+                <strong>ԽԱՉԱՏՈՒՐ ՍՏԵՓԱՆՅԱՆ ՍԵՐՅՈԺԱՅԻ [1962-07-12]</strong>
+            </div>
+            <div class="text-left">
+                <strong>ՀԻՎԱՆԴԱՆՈՑԱՅԻՆ ՊԱՅՄԱՆՆԵՐՈՒՄ ԱՐՏԱՀԻՎԱՆԴԱՆՈՑԱՅԻՆ ԲԺՇԿԱԿԱՆ ՕԳՆՈՒԹՅԱՆ ԵՎ ՍՊԱՍԱՐԿՄԱՆ ՔԱՐՏ</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <!-- Patient Complaints Section -->
+        <fieldset class="my-fieldset">
+            <legend>Գանգատներ (Patient Complaints)</legend>
+            <div class="form-group">
+                <label for="complaints">Հիվանդի գանգատները:</label>
+                <textarea 
+                    id="complaints" 
+                    name="anamnesisPatientComplaints" 
+                    maxlength="2000"
+                    aria-describedby="complaints-help"
+                    placeholder="Նկարագրեք հիվանդի գանգատները...">Զննման պահին գանագտվում է կրծքավանդակի աջ կեսի ցավից:</textarea>
+                <div id="complaints-help" class="sr-only">Մուտքագրեք հիվանդի գանգատները, առավելագույնը 2000 նիշ</div>
+            </div>
+        </fieldset>
+
+        <!-- Medical History Section -->
+        <fieldset class="my-fieldset">
+            <legend>Հիվանդության պատմություն (Medical History)</legend>
+            <div class="form-group">
+                <label for="medical-history">Anamnesis morbi:</label>
+                <textarea 
+                    id="medical-history" 
+                    name="treatmentsDsc" 
+                    maxlength="4000"
+                    aria-describedby="history-help"
+                    placeholder="Նկարագրեք հիվանդության պատմությունը...">26.07.2025թ.Զննման պահին գանագտվում է կրծքավանդակի աջ կեսի ցավից:Ըստ իր խոսքերի տուժել է աստիճաններից վայր ընկնելու հետևանքով:Կրծքավանդակը շնչառական ակտին մասնակցում է համաչափ։ Թոքերում աուսկուլտատիվ երկկողմանի շնչառւթյունը լսվում է մինչև պերիֆերիա։</textarea>
+                <div id="history-help" class="sr-only">Մուտքագրեք հիվանդության պատմությունը, առավելագույնը 4000 նիշ</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="arrival-type">Բերվել է:</label>
+                <select id="arrival-type" name="appliedType" aria-describedby="arrival-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="Շտապ օգնության կողմից">Շտապ օգնության կողմից</option>
+                    <option value="Ինքնուրույն" selected>Ինքնուրույն</option>
+                </select>
+                <div id="arrival-help" class="sr-only">Ընտրեք ինչպես է հիվանդը բերվել</div>
+            </div>
+        </fieldset>
+
+        <!-- Life History Section -->
+        <fieldset class="my-fieldset">
+            <legend>Կյանքի պատմություն (Life History)</legend>
+            <div class="form-group">
+                <label for="life-history">Anamnesis Vitae:</label>
+                <textarea 
+                    id="life-history" 
+                    name="anamnesisMorbiEntityADsc" 
+                    maxlength="4000"
+                    aria-describedby="life-help"
+                    placeholder="Նկարագրեք կյանքի պատմությունը...">չի նշում</textarea>
+                <div id="life-help" class="sr-only">Մուտքագրեք կյանքի պատմությունը, առավելագույնը 4000 նիշ</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="surgeries">Կրած վիրահատություններ:</label>
+                <select id="surgeries" name="surgeries" aria-describedby="surgeries-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="Ոչ" selected>Ոչ</option>
+                    <option value="Այո">Այո</option>
+                </select>
+                <input type="text" name="surgeryDsc" maxlength="200" placeholder="Նշեք վիրահատության մանրամասները..." aria-label="Վիրահատության մանրամասներ">
+                <div id="surgeries-help" class="sr-only">Ընտրեք արդյոք կրել է վիրահատություններ</div>
+            </div>
+
+            <div class="form-group">
+                <label for="allergies">Ալերգիա:</label>
+                <select id="allergies" name="allergies" aria-describedby="allergies-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="չի նշում" selected>չի նշում</option>
+                    <option value="նշում է">նշում է</option>
+                </select>
+                <input type="text" name="allergyDsc" maxlength="100" placeholder="Նկարագրեք ալերգիան..." aria-label="Ալերգիայի նկարագրություն">
+                <div id="allergies-help" class="sr-only">Ընտրեք արդյոք ունի ալերգիա</div>
+            </div>
+        </fieldset>
+
+        <!-- Physical Examination Section -->
+        <fieldset class="my-fieldset">
+            <legend>Օբյեկտիվ հետազոտության տվյալներ (Physical Examination)</legend>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div class="form-group">
+                    <label for="weight">Քաշ (կգ):</label>
+                    <input type="number" id="weight" name="weight" step="0.01" min="0" max="1000" aria-describedby="weight-help">
+                    <div id="weight-help" class="sr-only">Մուտքագրեք քաշը կիլոգրամներով</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="height">Հասակ (սմ):</label>
+                    <input type="number" id="height" name="height" step="0.01" min="0" max="1000" aria-describedby="height-help">
+                    <div id="height-help" class="sr-only">Մուտքագրեք հասակը սանտիմետրներով</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="temperature">Ջերմաստիճան:</label>
+                    <input type="number" id="temperature" name="temperature" step="0.01" min="0" max="50" value="36.5" aria-describedby="temp-help">
+                    <div id="temp-help" class="sr-only">Մուտքագրեք ջերմաստիճանը</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="diabetes">Շաքարային դիաբետ:</label>
+                <select id="diabetes" name="diabetes" aria-describedby="diabetes-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="տիպ 1">տիպ 1</option>
+                    <option value="տիպ 2">տիպ 2</option>
+                    <option value="չի նշում" selected>չի նշում</option>
+                </select>
+                <div id="diabetes-help" class="sr-only">Ընտրեք շաքարային դիաբետի տիպը</div>
+            </div>
+
+            <div class="form-group">
+                <label for="general-status">Ընդհանուր վիճակ:</label>
+                <textarea 
+                    id="general-status" 
+                    name="generalStatusDsc" 
+                    maxlength="300"
+                    aria-describedby="general-help"
+                    placeholder="Նկարագրեք ընդհանուր վիճակը..."></textarea>
+                <div id="general-help" class="sr-only">Նկարագրեք հիվանդի ընդհանուր վիճակը</div>
+            </div>
+
+            <div class="form-group">
+                <label for="consciousness">Գիտակցությունը:</label>
+                <select id="consciousness" name="generalConsciousness" aria-describedby="consciousness-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="հստակ" selected>հստակ</option>
+                    <option value="խանգարված">խանգարված</option>
+                </select>
+                <div id="consciousness-help" class="sr-only">Գնահատեք գիտակցության վիճակը</div>
+            </div>
+        </fieldset>
+
+        <!-- Cardiovascular System -->
+        <fieldset class="my-fieldset">
+            <legend>Սիրտ֊անոթային համակարգ (Cardiovascular System)</legend>
+            
+            <div class="form-group">
+                <label for="heart-sounds">Սրտային տոները:</label>
+                <select id="heart-sounds" name="cardioAusculative" aria-describedby="heart-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="մաքուր" selected>մաքուր</option>
+                    <option value="խուլ">խուլ</option>
+                </select>
+                <div id="heart-help" class="sr-only">Գնահատեք սրտային տոները</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                <div class="form-group">
+                    <label for="pulse">Պուլս (զարկ/րոպե):</label>
+                    <input type="number" id="pulse" name="pulseFrequency" max="200" min="0" value="75" aria-describedby="pulse-help">
+                    <div id="pulse-help" class="sr-only">Մուտքագրեք պուլսի հաճախականությունը</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bp-systolic">Զարկերակային ճնշում:</label>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="number" id="bp-systolic" name="bloodPressure1" max="300" min="0" value="120" aria-label="Սիստոլիկ ճնշում">
+                        <span>/</span>
+                        <input type="number" name="bloodPressure2" max="300" min="0" value="80" aria-label="Դիաստոլիկ ճնշում">
+                        <span>մմ սնդ.սյան</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="pulse-rhythm">Պուլսի ռիթմի խանգարումներ:</label>
+                <textarea 
+                    id="pulse-rhythm" 
+                    name="pulseRhythmDsc" 
+                    maxlength="600"
+                    aria-describedby="rhythm-help"
+                    placeholder="Նկարագրեք ռիթմի խանգարումները..."></textarea>
+                <div id="rhythm-help" class="sr-only">Նկարագրեք պուլսի ռիթմի խանգարումները</div>
+            </div>
+        </fieldset>
+
+        <!-- Respiratory System -->
+        <fieldset class="my-fieldset">
+            <legend>Շնչառական համակարգ (Respiratory System)</legend>
+            
+            <div class="form-group">
+                <label for="respiration-rate">Շնչառական հաճախականություն (րոպե):</label>
+                <input type="number" id="respiration-rate" name="respirationTime" max="100" min="0" value="18" aria-describedby="resp-help">
+                <div id="resp-help" class="sr-only">Մուտքագրեք շնչառական հաճախականությունը րոպեում</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lung-auscultation">Թոքերի աուսկուլտացիա:</label>
+                <select id="lung-auscultation" name="respiratoryAusculative" aria-describedby="lung-help">
+                    <option value="">Ընտրեք...</option>
+                    <option value="վեզիկուլյար" selected>վեզիկուլյար</option>
+                    <option value="թուլացած">թուլացած</option>
+                    <option value="կոշտացած">կոշտացած</option>
+                </select>
+                <div id="lung-help" class="sr-only">Գնահատեք թոքերի աուսկուլտացիան</div>
+            </div>
+
+            <div class="form-group">
+                <label for="respiratory-notes">Շնչառական համակարգի նկարագրություն:</label>
+                <textarea 
+                    id="respiratory-notes" 
+                    name="respirationNewDsc" 
+                    maxlength="300"
+                    aria-describedby="resp-notes-help"
+                    placeholder="Նկարագրեք շնչառական համակարգի վիճակը..."></textarea>
+                <div id="resp-notes-help" class="sr-only">Նկարագրեք շնչառական համակարգի վիճակը</div>
+            </div>
+        </fieldset>
+
+        <!-- Preliminary Conclusion -->
+        <fieldset class="my-fieldset">
+            <legend>Նախնական եզրակացություն (Preliminary Conclusion)</legend>
+            <div class="form-group">
+                <label for="conclusion">Եզրակացություն:</label>
+                <textarea 
+                    id="conclusion" 
+                    name="statusNotes" 
+                    maxlength="2000"
+                    aria-describedby="conclusion-help"
+                    placeholder="Մուտքագրեք նախնական եզրակացությունը...">Կրծքավանդակի փակ վնասվածք, աջից կողերի կոտրվածք։</textarea>
+                <div id="conclusion-help" class="sr-only">Մուտքագրեք նախնական եզրակացությունը, առավելագույնը 2000 նիշ</div>
+            </div>
+        </fieldset>
+
+        <!-- Discharge Status -->
+        <fieldset class="my-fieldset">
+            <legend>Դուրսգրման օր (Discharge Day)</legend>
+            
+            <div class="form-group">
+                <label for="general-discharge">Ընդհանուր վիճակը:</label>
+                <textarea 
+                    id="general-discharge" 
+                    name="generalStatusDischargeDay" 
+                    maxlength="500"
+                    aria-describedby="discharge-general-help"
+                    placeholder="Նկարագրեք դուրսգրման օրվա ընդհանուր վիճակը...">Բավարար</textarea>
+                <div id="discharge-general-help" class="sr-only">Նկարագրեք դուրսգրման օրվա ընդհանուր վիճակը</div>
+            </div>
+
+            <div class="form-group">
+                <label for="discharge-complaints">Գանգատները:</label>
+                <textarea 
+                    id="discharge-complaints" 
+                    name="complaintsDischargeDay" 
+                    maxlength="500"
+                    aria-describedby="discharge-complaints-help"
+                    placeholder="Նկարագրեք դուրսգրման օրվա գանգատները...">անփոփոխ</textarea>
+                <div id="discharge-complaints-help" class="sr-only">Նկարագրեք դուրսգրման օրվա գանգատները</div>
+            </div>
+
+            <div class="form-group">
+                <label for="treatment-provided">Կատարված բուժում:</label>
+                <textarea 
+                    id="treatment-provided" 
+                    name="treatment" 
+                    maxlength="500"
+                    aria-describedby="treatment-help"
+                    placeholder="Նկարագրեք կատարված բուժումը...">Վիրաբույժի, կրծքային վիրաբույժի խորհրդատվություններ:</textarea>
+                <div id="treatment-help" class="sr-only">Նկարագրեք կատարված բուժումը</div>
+            </div>
+
+            <div class="form-group">
+                <label for="discharge-advice">Տրված խորհուրդներ:</label>
+                <textarea 
+                    id="discharge-advice" 
+                    name="advicesDischargeDay" 
+                    maxlength="1000"
+                    aria-describedby="advice-help"
+                    placeholder="Մուտքագրեք տրված խորհուրդները...">Հիվանդին ցուցված է անալգետիկ թերապիա, ֆիզիկական ակտիվության սահմանափակում։ Դինամիկ ռադիոլոգիական հետազոտություն՝ կրծքավանդակի Ռ-գրաֆի 3 օր անց։</textarea>
+                <div id="advice-help" class="sr-only">Մուտքագրեք հիվանդին տրված խորհուրդները</div>
+            </div>
+        </fieldset>
+
+        <!-- Action Buttons -->
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="button" class="btn" onclick="saveForm()">Պահպանել</button>
+            <button type="button" class="btn" onclick="printForm()" style="background-color: #2196F3;">Տպել</button>
+            <button type="button" class="btn" onclick="clearForm()" style="background-color: #f44336;">Մաքրել</button>
+        </div>
+    </div>
+
+    <script>
+        function saveForm() {
+            alert('Ֆորմը պահպանված է');
+            // Add actual save functionality here
+        }
+
+        function printForm() {
+            window.print();
+        }
+
+        function clearForm() {
+            if (confirm('Դուք վստա՞հ եք, որ ցանկանում եք մաքրել ֆորմը:')) {
+                document.querySelectorAll('textarea, input[type="text"], input[type="number"]').forEach(function(element) {
+                    element.value = '';
+                });
+                document.querySelectorAll('select').forEach(function(element) {
+                    element.selectedIndex = 0;
+                });
+            }
+        }
+
+        // Auto-resize textareas
+        document.addEventListener('DOMContentLoaded', function() {
+            const textareas = document.querySelectorAll('textarea');
+            textareas.forEach(function(textarea) {
+                textarea.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+                
+                // Trigger initial resize
+                textarea.style.height = 'auto';
+                textarea.style.height = (textarea.scrollHeight) + 'px';
+            });
+        });
+
+        // Add keyboard navigation improvements
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                // Ensure tab navigation works properly
+                const focusableElements = document.querySelectorAll(
+                    'textarea, input, select, button, [tabindex]:not([tabindex="-1"])'
+                );
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
